@@ -54,7 +54,8 @@ final_result = []
 nowDate = f"{datetime.now()}"
 for i in range(len(cctv_df.index)):
     final_result.append(
-        {'average_danger': danger_result[i], 'cctv_num': cctv_result[i], 'municipality': people_df.loc[i][0], 'danger_year': int(crime_df.loc[i][2]), 'cctv_year': int(cctv_df.loc[i][2])})
+        {'average_danger': danger_result[i], 'cctv_num': cctv_result[i], 'municipality': people_df.loc[i][0],
+         'danger_year': int(crime_df.loc[i][2]), 'cctv_year': int(cctv_df.loc[i][2])})
 
 # with open(f'{nowDate[0:10]}_{nowDate[11:16]}_result.json', 'w', encoding='utf8') as outfile:
 #   json_file = json.dumps(final_result, indent=4, sort_keys=True, ensure_ascii=False)
@@ -62,7 +63,6 @@ for i in range(len(cctv_df.index)):
 
 app = Flask(__name__)
 CORS(app)
-
 
 @app.route('/data', methods=['GET'])  # test api
 def post_echo_call():
